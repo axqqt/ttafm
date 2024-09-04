@@ -10,6 +10,7 @@ export default function UploadForm() {
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
   const [linkText, setLinkText] = useState('');
+  const [uploadMenu , setUploadMenu] = useState(false);
   const { user } = useAuth();
 
   const handleSubmit = async (e) => {
@@ -43,27 +44,27 @@ export default function UploadForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="file" onChange={(e) => setFile(e.target.files[0])} accept="video/*" />
-      <input
-        type="text"
-        placeholder="Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <input
-        type="url"
-        placeholder="Link URL"
-        value={link}
-        onChange={(e) => setLink(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Link Text"
-        value={linkText}
-        onChange={(e) => setLinkText(e.target.value)}
-      />
-      <button type="submit">Upload</button>
-    </form>
+   <div><button onClick={()=>{setUploadMenu(!uploadMenu)}}>{uploadMenu  ? "Close Menu" : "Upload"}</button>{uploadMenu &&  <form onSubmit={handleSubmit}>
+   <input type="file" onChange={(e) => setFile(e.target.files[0])} accept="video/*" />
+   <input
+     type="text"
+     placeholder="Description"
+     value={description}
+     onChange={(e) => setDescription(e.target.value)}
+   />
+   <input
+     type="url"
+     placeholder="Link URL"
+     value={link}
+     onChange={(e) => setLink(e.target.value)}
+   />
+   <input
+     type="text"
+     placeholder="Link Text"
+     value={linkText}
+     onChange={(e) => setLinkText(e.target.value)}
+   />
+   <button type="submit">Upload</button>
+ </form>}</div>
   );
 }

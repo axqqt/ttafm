@@ -35,7 +35,7 @@ export default function Home() {
     <div>
       <h1>TikTok Clone</h1>
       <button onClick={logout}>Logout</button>
-      <button><Link href={"/livestreams"}>Streams</Link></button>
+      <Link href={"/livestreams"}>Streams</Link>
       <UploadForm />
       <VideoFeed videos={videos} />
     </div>

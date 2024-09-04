@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import VideoFeed from './components/VideoFeed';
 import UploadForm from './components/UploadForm';
 import { useAuth } from './context/AuthContext';
+import Link from 'next/link';
 
 export default function Home() {
   const [videos, setVideos] = useState([]);
@@ -34,6 +35,7 @@ export default function Home() {
     <div>
       <h1>TikTok Clone</h1>
       <button onClick={logout}>Logout</button>
+      <button><Link href={"/livestreams"}>Streams</Link></button>
       <UploadForm />
       <VideoFeed videos={videos} />
     </div>
